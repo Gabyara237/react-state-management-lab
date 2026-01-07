@@ -107,6 +107,23 @@ const App = () => {
   return (
     <>
       <p>Money: {money}</p>
+      <h2>Team</h2>
+      {team.length=== 0? <p>Pick some team members!</p>: 
+        <ul>
+        { team.map((zombieFighter)=>(
+          <li key={zombieFighter.id}>
+            <img src={zombieFighter.img}/>
+            <p>Name: {zombieFighter.name}</p>
+            <p>Price: {zombieFighter.price}</p>
+            <p>Strength: {zombieFighter.strength}</p>
+            <p>Agility: {zombieFighter.agility}</p>
+          </li>
+        ))
+        }
+      </ul>
+      }
+      
+      <h2>Zombie Fighters</h2>
       <ul>
         { zombieFighters.map((zombieFighter)=>(
           <li key={zombieFighter.id}>
