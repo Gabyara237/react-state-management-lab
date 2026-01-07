@@ -6,6 +6,7 @@ const App = () => {
 
   const [team, setTeam] = useState([])
   const [money, setMoney] = useState(100)
+  const [message, setMessage] = useState("")
   const [zombieFighters, setZombieFighters] = useState(
     [
       {
@@ -97,11 +98,12 @@ const App = () => {
  const  handleAddFighter = (zombieFighter) =>{
 
   if(money>= zombieFighter.price){
+    setMessage("");
     setTeam([...team, zombieFighter]);
     setZombieFighters(zombieFighters.filter(fighter => fighter.id !== zombieFighter.id));
     setMoney(money- zombieFighter.price)
   }else{
-    console.log("Not enough money")
+    setMessage("Not enough money")
   }
  }
 
@@ -109,11 +111,14 @@ const App = () => {
     setTeam(team.filter(member => member.id !== zombieFighter.id));
     setMoney(money+zombieFighter.price)
     setZombieFighters([...zombieFighters,zombieFighter])
+    setMessage("")
   }
 
   return (
     <>
+      <h1>Zombie Fighters</h1>
       <p>Money: {money}</p>
+      {message!==""?<p>{message}</p>:null}
       <p>Team Strength: {totalStrength}</p>
       <p>Team Agility: {totalAgility}</p>
 
@@ -134,7 +139,7 @@ const App = () => {
       </ul>
       }
       
-      <h2>Zombie Fighters</h2>
+      <h2>Fighters</h2>
       <ul>
         { zombieFighters.map((zombieFighter)=>(
           <li key={zombieFighter.id}>
