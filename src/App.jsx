@@ -91,12 +91,14 @@ const App = () => {
     ]
   )
 
+ const totalStrength = team.reduce((total,fighter)=> total+fighter.strength,0)
+
  const  handleAddFighter = (zombieFighter) =>{
 
   if(money>= zombieFighter.price){
     setTeam([...team, zombieFighter]);
     setZombieFighters(zombieFighters.filter(fighter => fighter.id !== zombieFighter.id));
-    setMoney(money- zombieFighter.price)   
+    setMoney(money- zombieFighter.price)
   }else{
     console.log("Not enough money")
   }
@@ -106,6 +108,7 @@ const App = () => {
 
   return (
     <>
+      <p>Total Strength: {totalStrength}</p>
       <p>Money: {money}</p>
       <h2>Team</h2>
       {team.length=== 0? <p>Pick some team members!</p>: 
