@@ -92,6 +92,7 @@ const App = () => {
   )
 
  const totalStrength = team.reduce((total,fighter)=> total+fighter.strength,0)
+ const totalAgility = team.reduce((total,fighter)=> total + fighter.agility, 0)
 
  const  handleAddFighter = (zombieFighter) =>{
 
@@ -102,14 +103,14 @@ const App = () => {
   }else{
     console.log("Not enough money")
   }
-
-
  }
 
   return (
     <>
-      <p>Total Strength: {totalStrength}</p>
       <p>Money: {money}</p>
+      <p>Team Strength: {totalStrength}</p>
+      <p>Team Agility: {totalAgility}</p>
+
       <h2>Team</h2>
       {team.length=== 0? <p>Pick some team members!</p>: 
         <ul>
