@@ -93,6 +93,7 @@ const App = () => {
 
   return (
     <>
+      <p>Money: {money}</p>
       <ul>
         { zombieFighters.map((zombieFighter, index)=>(
           <li key={index}>
